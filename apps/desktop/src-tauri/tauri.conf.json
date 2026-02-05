@@ -1,0 +1,40 @@
+{
+  "build": {
+    "beforeDevCommand": "npm run dev --prefix ../../admin-web",
+    "devUrl": "http://localhost:3000",
+    "beforeBuildCommand": "echo 'Build admin-web with output export for Tauri'",
+    "frontendDist": "../../admin-web/out"
+  },
+  "package": {
+    "productName": "Workshop Platform",
+    "version": "0.0.1"
+  },
+  "tauri": {
+    "allowlist": {
+      "all": false,
+      "shell": { "all": false, "open": true },
+      "window": { "all": true }
+    },
+    "bundle": {
+      "active": true,
+      "category": "Productivity",
+      "copyright": "",
+      "deb": { "depends": [] },
+      "externalBin": [],
+      "icon": [],
+      "identifier": "com.workshop.platform",
+      "longDescription": "Cliente de escritorio para Workshop Platform",
+      "macOS": { "entitlements": null, "exceptionDomain": "", "frameworks": [], "providerShortName": null, "signingIdentity": null },
+      "resources": [],
+      "shortDescription": "Workshop Platform Desktop",
+      "targets": "all",
+      "windows": { "certificateThumbprint": null, "digestAlgorithm": "sha256", "timestampUrl": "" },
+      "wix": { "language": "en-US" }
+    },
+    "security": { "csp": null },
+    "updater": { "active": false },
+    "windows": [
+      { "fullscreen": false, "height": 800, "resizable": true, "title": "Workshop Platform", "width": 1200 }
+    ]
+  }
+}

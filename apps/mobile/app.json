@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "Workshop Platform",
+    "slug": "workshop-mobile",
+    "version": "1.0.0",
+    "scheme": "workshop",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true
+  }
+}

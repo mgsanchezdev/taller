@@ -1,0 +1,17 @@
+{
+  "name": "desktop",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "tauri dev",
+    "build": "tauri build",
+    "tauri": "tauri"
+  },
+  "dependencies": {
+    "@workshop-platform/api-client": "*",
+    "@workshop-platform/types": "*"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^1.5.9"
+  }
+}

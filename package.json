@@ -1,0 +1,17 @@
+{
+  "name": "workshop-platform",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:admin": "npm run dev -w admin-web",
+    "build:admin": "npm run build -w admin-web",
+    "dev:desktop": "npm run tauri dev -w desktop",
+    "dev:mobile": "npm run start -w mobile"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

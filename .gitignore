@@ -1,0 +1,50 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build
+dist/
+build/
+.next/
+out/
+*.exe
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Go
+backend/*.exe
+backend/bin/
+vendor/
+
+# Tauri
+apps/desktop/src-tauri/target/
+
+# Expo
+apps/mobile/.expo/
+apps/mobile/dist/
+
+# Testing
+coverage/
+.nyc_output/
+
+# Misc
+*.tgz
+.turbo
