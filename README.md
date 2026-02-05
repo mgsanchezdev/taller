@@ -15,7 +15,7 @@ Monorepo para la plataforma de gestión de talleres: recepción, inspección, re
 
 ## Requisitos
 
-- Node.js 18+
+- Node.js 20+ (admin-web con Next 16)
 - Go 1.21+
 - PostgreSQL 15+
 - Docker (opcional, para entorno local)
@@ -32,15 +32,23 @@ cd infra/docker && docker-compose up -d
 cd backend && go mod download && go run ./cmd/api
 ```
 
-### 2. Admin Web (Next.js)
+### 2. Admin Web (Next.js 16)
+
+En monorepo, Next 16 usa **webpack** por defecto en el script `dev` para evitar fallos de Turbopack. Para instalar bien Next 16:
 
 ```bash
+# Desde la raíz del monorepo
+Remove-Item -Recurse -Force node_modules -ErrorAction SilentlyContinue
+Remove-Item -Force package-lock.json -ErrorAction SilentlyContinue
 npm install
 npm run dev:admin
 ```
 
 Admin: http://localhost:3000  
 API: http://localhost:8080
+
+- **Turbopack** (experimental en monorepo): `cd apps/admin-web && npm run dev:turbo`
+- **Webpack** (por defecto, estable): `npm run dev:admin`
 
 ### 3. Variables de entorno
 

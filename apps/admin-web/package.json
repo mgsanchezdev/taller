@@ -3,22 +3,23 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "dev": "npx next dev --webpack",
+    "dev:turbo": "npx next dev",
+    "build": "npx next build",
+    "start": "npx next start",
+    "lint": "npx next lint"
   },
   "dependencies": {
     "@workshop-platform/api-client": "*",
     "@workshop-platform/types": "*",
-    "next": "14.2.15",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "next": "^16.1.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
     "typescript": "^5"
   }
 }
