@@ -3,6 +3,18 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { login, configureApi } from '@workshop-platform/api-client';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
+import InputAdornment from '@mui/material/InputAdornment';
+import Alert from '@mui/material/Alert';
+import LoginIcon from '@mui/icons-material/Login';
+import EmailIcon from '@mui/icons-material/Email';
+import LockIcon from '@mui/icons-material/Lock';
+import BusinessIcon from '@mui/icons-material/Business';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -33,106 +45,96 @@ export default function LoginPage() {
   }
 
   return (
-    <main
-      style={{
+    <Box
+      sx={{
         minHeight: '100vh',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '1rem',
+        p: 2,
       }}
     >
-      <div
-        style={{
-          width: '100%',
-          maxWidth: '400px',
-          background: 'var(--surface)',
-          border: '1px solid var(--border)',
-          borderRadius: '12px',
-          padding: '2rem',
-        }}
-      >
-        <h1 style={{ marginBottom: '1.5rem', fontSize: '1.5rem' }}>
-          Iniciar sesión
-        </h1>
-        <form onSubmit={handleSubmit}>
-          <label style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--muted)', fontSize: '0.875rem' }}>
-            Workshop ID
-          </label>
-          <input
-            type="text"
-            value={workshopId}
-            onChange={(e) => setWorkshopId(e.target.value)}
-            required
-            style={{
-              width: '100%',
-              padding: '0.75rem',
-              marginBottom: '1rem',
-              background: 'var(--bg)',
-              border: '1px solid var(--border)',
-              borderRadius: '8px',
-              color: 'var(--text)',
-            }}
-          />
-          <label style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--muted)', fontSize: '0.875rem' }}>
-            Email
-          </label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            style={{
-              width: '100%',
-              padding: '0.75rem',
-              marginBottom: '1rem',
-              background: 'var(--bg)',
-              border: '1px solid var(--border)',
-              borderRadius: '8px',
-              color: 'var(--text)',
-            }}
-          />
-          <label style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--muted)', fontSize: '0.875rem' }}>
-            Contraseña
-          </label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            style={{
-              width: '100%',
-              padding: '0.75rem',
-              marginBottom: '1rem',
-              background: 'var(--bg)',
-              border: '1px solid var(--border)',
-              borderRadius: '8px',
-              color: 'var(--text)',
-            }}
-          />
-          {error && (
-            <p style={{ color: '#ef4444', fontSize: '0.875rem', marginBottom: '1rem' }}>
-              {error}
-            </p>
-          )}
-          <button
-            type="submit"
-            disabled={loading}
-            style={{
-              width: '100%',
-              padding: '0.75rem',
-              background: 'var(--accent)',
-              color: 'var(--bg)',
-              border: 'none',
-              borderRadius: '8px',
-              fontWeight: 600,
-              cursor: loading ? 'not-allowed' : 'pointer',
-            }}
-          >
-            {loading ? 'Entrando...' : 'Entrar'}
-          </button>
-        </form>
-      </div>
-    </main>
+      <Card sx={{ maxWidth: 420, width: '100%' }}>
+        <CardContent sx={{ p: 3 }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 3 }}>
+            <LoginIcon color="primary" sx={{ fontSize: 32 }} />
+            <Typography variant="h5" component="h1" fontWeight="bold">
+              Iniciar sesión
+            </Typography>
+          </Box>
+
+          <form onSubmit={handleSubmit}>
+            <TextField
+              label="Workshop ID"
+              value={workshopId}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setWorkshopId(e.target.value)}
+              required
+              fullWidth
+              margin="normal"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <BusinessIcon fontSize="small" />
+                  </InputAdornment>
+                ),
+              }}
+            />
+            <TextField
+              label="Email"
+              type="email"
+              value={email}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+              required
+              fullWidth
+              margin="normal"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <EmailIcon fontSize="small" />
+                  </InputAdornment>
+                ),
+              }}
+            />
+            <TextField
+              label="Contraseña"
+              type="password"
+              value={password}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+              required
+              fullWidth
+              margin="normal"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <LockIcon fontSize="small" />
+                  </InputAdornment>
+                ),
+              }}
+            />
+
+            {error && (
+              <Alert severity="error" sx={{ mt: 2 }}>
+                {error}
+              </Alert>
+            )}
+
+            <Button
+              type="submit"
+              variant="contained"
+              fullWidth
+              size="large"
+              disabled={loading}
+              sx={{ mt: 3, mb: 1, py: 1.5 }}
+            >
+              {loading ? 'Entrando...' : 'Entrar al dashboard'}
+            </Button>
+          </form>
+
+          <Typography variant="body2" color="text.secondary" sx={{ mt: 2, textAlign: 'center' }}>
+            Tras iniciar sesión serás redirigido al dashboard.
+          </Typography>
+        </CardContent>
+      </Card>
+    </Box>
   );
 }

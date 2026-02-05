@@ -4,12 +4,15 @@
   "workspaces": ["apps/*", "packages/*"],
   "scripts": {
     "postinstall": "node scripts/link-next-in-admin-web.js",
-    "dev:admin": "npm run dev -w admin-web",
+    "dev:admin": "npm run dev --prefix apps/admin-web",
     "build:admin": "npm run build -w admin-web",
     "dev:desktop": "npm run tauri dev -w desktop",
     "dev:mobile": "npm run start -w mobile"
   },
   "overrides": {
+    "next": "^16.1.0"
+  },
+  "devDependencies": {
     "next": "^16.1.0"
   },
   "engines": {
